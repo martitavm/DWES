@@ -1,0 +1,17 @@
+lista = ["Ordenador", "Portatil","Movil", "Smartwatch", "Television"]
+lista.append("Tablet")
+print(lista)
+lista.insert(0,"Termomix")
+print(lista)
+del lista[0]
+print(lista)
+lista.pop()
+print(lista)
+lista.remove("Smartwatch")
+print(lista)
+lista.sort()
+print(lista)
+print(sorted(lista))
+lista.reverse()
+print(lista)
+print(len(lista))
