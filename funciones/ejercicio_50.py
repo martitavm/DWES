@@ -18,6 +18,9 @@ def calcular_medias(grupos, ag = None, fase = None):
                continue
            medias_fases = []
            for nombre_fase, puntuaciones in fases.items():
+               # Si se proporciona fase y no coincide con el nombre de la fase, continue
+               if fase and nombre_fase.lower()!= fase.lower():
+                   continue
                puntuaciones_redondeadas = list(map(lambda x: round(x,2), puntuaciones))
                media_fase = round(sum(puntuaciones_redondeadas) / len(puntuaciones_redondeadas),2)
                medias_fases.append(media_fase)
