@@ -13,17 +13,19 @@ def calcular_medias(grupos, ag = None, fase = None):
    # Iteramos sobre las modalidades
    for modalidad, agrupaciones in grupos.items():
        for nombre_agrupacion, fases in agrupaciones.items():
+           # Si se proporciona el argumento 'ag' y no coincide con el nombre de la agrupación, continue
+           if ag and nombre_agrupacion.lower()!= ag.lower():
+               continue
            medias_fases = []
            for nombre_fase, puntuaciones in fases.items():
                puntuaciones_redondeadas = list(map(lambda x: round(x,2), puntuaciones))
                media_fase = round(sum(puntuaciones_redondeadas) / len(puntuaciones_redondeadas),2)
                medias_fases.append(media_fase)
 
-               media_total =  round(sum(medias_fases) / len(medias_fases),2)
+               media_total = round(sum(medias_fases) / len(medias_fases), 2)
                resultados[nombre_agrupacion] = media_total
+
    return resultados
-
-
 
 
 grupos = {
@@ -78,5 +80,5 @@ grupos = {
         }
     }
 }
-media = calcular_medias(grupos)
+media = calcular_medias(grupos, ag="Los Yesterday")
 print(media)
