@@ -26,12 +26,12 @@ def analiza_vino(*lista_vinos):
         """
     d1 = {}
     for vino in lista_vinos:
-        if "Sherry" in vino:
+        if "sherry" in vino.lower():
             d1.update({vino: True})
         else:
             d1.update({vino: False})
 
-    vinos_sherry = list(filter(lambda x: "Sherry" in x, lista_vinos))
+    vinos_sherry = list(filter(lambda x: "sherry" in x.lower(), lista_vinos))
 
     return d1,vinos_sherry
 
