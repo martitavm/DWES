@@ -1,6 +1,7 @@
 vinos_jerez = ["Fino Sherry", "Pedro Ximénez", "Sherry Cream", "Moscatel", "Oloroso"]
 
 def analiza_vino(*lista_vinos):
+    pass
     """
         Analiza una lista de nombres de vinos y determina si contienen la palabra 'Sherry'.
 
