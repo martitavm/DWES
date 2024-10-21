@@ -4,7 +4,6 @@ def redondear_puntuacion(puntuacion):
     """
     return round(puntuacion, 2)
 
-
 def calcular_medias(grupos, *args):
     """
     Calcula las medias de puntuaciones de las agrupaciones en las distintas modalidades y fases.
@@ -41,9 +40,7 @@ def calcular_medias(grupos, *args):
                 if fase_adicional in fases:
                     puntuaciones_adicionales = fases[fase_adicional]
                     puntuaciones_redondeadas_adicional = map(redondear_puntuacion, puntuaciones_adicionales)
-                    media_fase_adicional = sum(puntuaciones_redondeadas_adicional) / len(
-                        puntuaciones_redondeadas_adicional)
-                    puntuaciones_totales.append(media_fase_adicional)
+                    puntuaciones_totales.append(puntuaciones_redondeadas_adicional)
 
             # Calculamos la media general de todas las fases de la agrupación y la almacenamos en medias_agrupaciones
             media_general = round(sum(puntuaciones_totales) / len(puntuaciones_totales), 2)
