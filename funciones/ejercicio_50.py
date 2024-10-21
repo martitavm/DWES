@@ -1,52 +1,29 @@
-def redondear_puntuacion(puntuacion):
-    """
-    Uso una función auxiliar que redondea a dos decimales para usar map
-    """
-    return round(puntuacion, 2)
-
-def calcular_medias(grupos, *args):
-    """
+"""
     Calcula las medias de puntuaciones de las agrupaciones en las distintas modalidades y fases.
     Para cada agrupación, hace la media de las puntuaciones de los jurados en cada fase, y luego calcula
     la media general de todas las fases.
 
-    Argumentos:
-    grupos -- diccionario con las modalidades, agrupaciones y sus puntuaciones en las fases
-    *args -- fases adicionales opcionales para agregar o modificar puntuaciones específicas
+    :param grupos: Diccionario que contiene las modalidades y agrupaciones con sus puntuaciones
+    :param args: Nombre de la agrupación para la cual calcular las medias. Si no se especifica, calcula para todas
+    :param fase: Fase específica para calcular media. Si no se especifica, calcula para todas las fases
+    :return: Un diccionario con las agrupaciones y sus medias de puntuación total
+"""
+def calcular_medias(grupos, ag = None, fase = None):
+   resultados = {}
+   # Iteramos sobre las modalidades
+   for modalidad, agrupaciones in grupos.items():
+       for nombre_agrupacion, fases in agrupaciones.items():
+           medias_fases = []
+           for nombre_fase, puntuaciones in fases.items():
+               puntuaciones_redondeadas = list(map(lambda x: round(x,2), puntuaciones))
+               media_fase = round(sum(puntuaciones_redondeadas) / len(puntuaciones_redondeadas),2)
+               medias_fases.append(media_fase)
 
-    Devuelve:
-    Un diccionario con las agrupaciones y su puntuación total.
-    """
+               media_total =  round(sum(medias_fases) / len(medias_fases),2)
+               resultados[nombre_agrupacion] = media_total
+   return resultados
 
-    # Diccionario que almacenará las medias
-    medias_agrupaciones = {}
 
-    # Recorremos el primer diccionario (modalidades)
-    for modalidad, agrupaciones in grupos.items():
-        for agrupacion, fases in agrupaciones.items():
-            puntuaciones_totales = []
-
-            # Recorremos el segundo diccionario (las fases)
-            for fase, puntuaciones in fases.items():
-                # Redondeamos las puntuaciones a 2 decimales usando la función map
-                puntuaciones_redondeadas = list(map(redondear_puntuacion, puntuaciones))
-
-                # Calculamos la media de la fase y las guardamos en la lista puntuaciones_totales
-                media_fase = sum(puntuaciones_redondeadas) / len(puntuaciones_redondeadas)
-                puntuaciones_totales.append(media_fase)
-
-            # Si hay fases adicionales en *args, las añadimos
-            for fase_adicional in args:
-                if fase_adicional in fases:
-                    puntuaciones_adicionales = fases[fase_adicional]
-                    puntuaciones_redondeadas_adicional = map(redondear_puntuacion, puntuaciones_adicionales)
-                    puntuaciones_totales.append(puntuaciones_redondeadas_adicional)
-
-            # Calculamos la media general de todas las fases de la agrupación y la almacenamos en medias_agrupaciones
-            media_general = round(sum(puntuaciones_totales) / len(puntuaciones_totales), 2)
-            medias_agrupaciones[agrupacion] = media_general
-
-    return medias_agrupaciones
 
 
 grupos = {
@@ -101,6 +78,5 @@ grupos = {
         }
     }
 }
-
-resultado = calcular_medias(grupos)
-print(resultado)
+media = calcular_medias(grupos)
+print(media)
