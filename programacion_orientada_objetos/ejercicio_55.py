@@ -26,5 +26,63 @@
 
 class Empleado:
     def __init__(self, nombre, salario):
-        self.__nombre = nombre  # Atributo 'privado'
-        self.__salario = salario  # Atributo 'privado'
+        self._nombre = nombre  # Atributo 'privado'
+        self._salario = salario  # Atributo 'privado'
+
+    @property
+    def nombre(self):  # Getter
+        return self._nombre
+
+    @nombre.setter
+    def nombre(self, valor):  # Setter
+        if isinstance(valor, str):
+            self._nombre = valor
+        else:
+            raise ValueError("El nombre debe ser una cadena de caracteres.")
+
+    @property
+    def salario(self):  # Getter
+        return self.salario
+
+    @salario.setter
+    def salario(self, valor):  # Setter
+        if isinstance(valor, float):
+            self._salario = valor
+        else:
+            raise ValueError("El salario tiene que ser un número con decimales")
+
+    def detalles(self):
+        return f"Nombre: {self._nombre}, Salario: {self._salario}"
+
+    def __del__(self):
+        print(
+            f"El objeto del empleado {self._nombre} con salario {self._salario} ha sido eliminado."
+        )
+
+
+class Gerente(Empleado):
+    def __init__(self, nombre, salario, departamento):
+        super().__init__(nombre, salario)
+        self._departamento = departamento
+
+    @property
+    def departamento(self):  # Getter
+        return self._departamento
+
+    @departamento.setter
+    def departamento(self, valor):  # Setter
+        if isinstance(valor, str):
+            self._departamento = valor
+        else:
+            raise ValueError("El departamento debe ser una cadena de caracteres.")
+
+    def detalles(self):
+        return f"Nombre: {self._nombre}, Salario: {self._salario}, Departamento: {self._departamento}"
+
+    @classmethod
+    def descuento_sueldo(cls, salario):
+        return salario * 0.90
+
+    @staticmethod
+    def impuesto(salario):
+        return salario * 0.21
