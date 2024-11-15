@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+{% if logged_in %}
+    	<h2>Bienvenide {{ username }}</h2>
+        <p>Felez Neveded</p>
+        <p>Si quieres registrarte haz clic aquí</p>
+        <br><br>
+        <a href={{url_for('login')}} >Registrar</a>
+
+{% else %}
+<h2>Bienvenide Cuerpe {{ username }}</h2>
+<p>Felez Neveded</p>
+
+{% endif %}
+
+</body>
+</html>
