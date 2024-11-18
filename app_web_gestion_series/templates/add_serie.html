@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Añadir Serie</title>
+</head>
+<body>
+    <h1>Añadir Serie</h1>
+    <form method="POST">
+        <label for="nombre">Nombre de la serie:</label>
+        <input type="text" name="nombre" id="nombre" placeholder="nombre de la serie" required>
+        <br><br>
+        <label for="sinopsis">Sinopsis:</label>
+        <textarea name="sinopsis" id="sinopsis" placeholder="Escribe aquí la sinopsis..." required></textarea>
+        <br><br>
+        <label for="puntuación">Puntuación (0-10):</label>
+        <input type="number" name="puntuación" id="puntuación" min="0" max="10" placeholder="(0-10)" required>
+        <br><br>
+        <label for="género">Género:</label>
+        <input type="text" name="género" id="género" placeholder="género" required>
+        <br><br>
+        <label for="fecha_estreno">Fecha de estreno:</label>
+        <input type="date" name="fecha_estreno" id="fecha_estreno" required>
+        <br><br>
+        <label for="número_capítulos">Número de capítulos:</label>
+        <input type="number" name="número_capítulos" id="número_capítulos" min="1" placeholder="núm capítulos" required>
+        <br><br>
+        <label for="duración_capítulos">Duración de capítulos (min):</label>
+        <input type="number" name="duración_capítulos" id="duración_capítulos" min="1" placeholder="duración en min" required>
+        <br><br>
+        <label for="categoría">Categoría:</label>
+        <select name="categoría" id="categoría" required>
+            <option value="" disabled selected>Seleccione una categoría</option>
+            <option value="Series que me gustarían ver">Series que me gustarían ver</option>
+            <option value="Series que estoy viendo">Series que estoy viendo</option>
+            <option value="Series vistas">Series vistas</option>
+        </select>
+        <br><br>
+        <button type="submit">Añadir</button>
+    </form>
+</body>
+</html>
+
