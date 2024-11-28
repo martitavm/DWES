@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner de Cookies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Bienvenidx a nuestra aplicación</h1>
+    <img src="{{ url_for('static',filename='python_meme1.webp') }}" alt="python_meme">
+    <div class="cookie-banner">
+        <p>Usamos cookies para mejorar su experiencia. Al continuar navegando, acepta el uso de cookies. <a href="{{ url_for('politicas_cookies') }}">Política de Cookies</a>
+</p>
+
+        <form action="{{ url_for('accept_cookies') }}" method="POST">
+            <button type="submit">Aceptar</button>
+        </form>
+        <form action="{{ url_for('reject_cookies') }}" method="POST">
+            <button type="submit">Rechazar</button>
+        </form>
+    </div>
+</body>
+</html>
+
+
